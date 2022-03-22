@@ -1,0 +1,9 @@
+<div tabindex="1" class="flex-space-between-padding-1 width-24">
+    <div class="flex-space-between">
+      <mat-icon>{{snackBarService.getSnackBarData(data.snackType)}}</mat-icon>
+      <div class="padding-1 message">
+        <span>{{data.message}}</span>
+      </div>
+    </div>
+    <mat-icon *ngIf='data.showButton' class="pointer" tabindex="1" (click)="closeSnackBar()">close</mat-icon>
+  </div>

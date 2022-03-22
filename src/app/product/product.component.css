@@ -1,0 +1,42 @@
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  table {
+    width: 100%;
+  }
+  td {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .mat-column-Id {
+    left: 0px;
+    width: 100px;
+  }
+  .mat-column-Name {
+    left: 0px;
+    width: 100px;
+  }
+  .mat-column-Price {
+    left: 0px;
+    width: 100px;
+  }
+  .mat-column-Action {
+    left: 100px;
+    width: 100px;
+  }
+  .demo-table {
+    padding-bottom: 10px;
+  }
+  .absolute{
+    position: absolute !important;
+  }
+  .relative-pos{
+    position:relative !important;
+  }
+  .button{
+    background: darkred;
+    color:white;
+  }
+  mat-slider {
+    width: 30px;
+  }

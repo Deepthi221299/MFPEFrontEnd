@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+  }
+
+  .flex-space-between{
+    width : 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  

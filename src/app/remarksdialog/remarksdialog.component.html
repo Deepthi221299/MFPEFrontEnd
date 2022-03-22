@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Rating</h1>
+<div mat-dialog-content>
+  <div *ngFor="let product of data.productData" class="flex">
+      <div>{{product.productId}}</div>
+      <div>{{product.productName}}</div>
+      <div>
+          <span *ngFor="let star of product.stars; let i = index" (click)="rate(i + 1 , product)">
+          <ng-container *ngIf="star; else noStar">⭐</ng-container>
+          <ng-template #noStar>★</ng-template>
+        </span>
+      </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.productData" cdkFocusInitial>Done</button>
+</div>

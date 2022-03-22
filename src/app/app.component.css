@@ -1,0 +1,25 @@
+body {
+    padding: 10px;
+    padding-bottom: 60px; /* Height of the footer */
+  }
+ 
+  #image {
+    height: 90px;
+    width: 100px;
+    position: relative;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 5%;
+  }
+  
+  .example-spacer {
+    flex: 0 0 auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Height of the footer */
+    background: #6cf;
+  }

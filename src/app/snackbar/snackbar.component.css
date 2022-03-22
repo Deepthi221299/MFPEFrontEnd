@@ -1,0 +1,32 @@
+::ng-deep .mat-snack-bar-container {
+    display: flex;
+    align-items: center;
+    width: 28rem !important;
+    max-width: 44rem !important;
+    padding: 0rem !important;
+    background-color: aliceblue;
+    color: black;
+  }
+  
+  .width-24 {
+    width: 26rem !important;
+    max-width: 42rem !important;
+  }
+  
+  .flex-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .flex-space-between-padding-1 {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 1rem;
+  }
+  
+  .padding-1 {
+    padding: 1rem;
+    
+  }

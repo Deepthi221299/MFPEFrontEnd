@@ -1,0 +1,149 @@
+<br />
+<mat-card>
+  <strong
+    >WELCOME {{ getUserName()  }}
+  </strong>
+</mat-card>
+
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ ModalTitle }}</h5>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<div class="d-flex w-50 flex-column justify-content-center">
+  <mat-radio-group [(ngModel)]="searchType">
+    <mat-radio-button color="primary" value="id">Search By Id</mat-radio-button>
+    <mat-radio-button color="primary" value="name">Search By Name</mat-radio-button>
+  </mat-radio-group>
+  <div class="pt-3">
+    &nbsp;
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>{{'Search by ' + searchType}}</mat-label>
+      <input #searchInput matInput (input)="handleInput($event)">
+      <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button class="button"
+    style="margin-left: 2rem"
+    [disabled]="!searchValue"
+    mat-raised-button
+    (click)="SearchProduct()">
+    Search
+  </button>
+</div>
+</div>
+
+<table mat-table [dataSource]="ProductList" class="mat-elevation-z8 demo-table">
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let product">{{ product.productId }}</td>
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let product">{{ product.productName }}</td>
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+  &nbsp;
+  <ng-container matColumnDef="Image">
+    <th mat-header-cell *matHeaderCellDef>Image</th>
+    <td mat-cell *matCellDef="let product"><img width="200px"  [src]="'assets/'+product.productName +'.jpg'"></td>
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+  &nbsp;
+  <ng-container matColumnDef="Price">
+    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <td mat-cell *matCellDef="let product">{{ product.price }}</td>
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+  &nbsp; &nbsp; &nbsp;
+  <ng-container matColumnDef="Description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let product">{{ product.description }}</td>
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+  &nbsp;
+  <ng-container matColumnDef="Rating">
+    <th mat-header-cell *matHeaderCellDef>Rating /5</th>
+    <td mat-cell *matCellDef="let product">{{ product.rating }}</td>
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+  &nbsp;
+  <ng-container matColumnDef="VendorDetails">
+    <th mat-header-cell *matHeaderCellDef>VendorDetails</th>
+    <td mat-cell *matCellDef="let product">
+      <button *ngIf="!product?.vendorList?.length" class="button" (click)="selectvendor(product)" mat-raised-button> Select Vendor </button>
+        <mat-label *ngIf="!!product?.vendorList?.length">Vendors</mat-label>
+
+        
+        <select *ngIf="!!product?.vendorList?.length" [(ngModel)]="product.vendorId">
+          <option *ngFor="let vendor of product.vendorList" [value]="vendor.vendorId" >{{vendor.vendor.name}} </option>
+        </select>
+</td>
+&nbsp;
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+  <ng-container matColumnDef="Handsinstocks">
+    <th mat-header-cell *matHeaderCellDef>Available quantity</th>
+    <td mat-cell *matCellDef="let vendor">{{ vendor.handInStocks }}</td>
+  </ng-container>
+  <mat-divider [vertical]="true"></mat-divider>
+  &nbsp;
+  <ng-container matColumnDef="selectquantity">
+    <th mat-header-cell *matHeaderCellDef>Select Quantity</th>
+    <td mat-cell *matCellDef="let product">
+      <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      tickInterval="1"
+      step="1"
+      min="0"
+      max="50"
+      aria-label="units" [value]="product.quantity"></mat-slider></td>
+  </ng-container>
+  &nbsp;&nbsp;
+  <mat-divider [vertical]="true"></mat-divider>
+  &nbsp;
+  &nbsp;
+  &nbsp;
+
+  <ng-container matColumnDef="Action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let product">
+      <br />
+      <br />
+      <br />
+      <button
+        mat-raised-button
+        color="warn"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        data-backdrop="static"
+        data-keyboard="false"
+        (click)="getVendorData(product)">
+        Add to Cart
+      </button>
+      <br />
+      <br />
+    </td>
+  </ng-container>
+
+  &nbsp;
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

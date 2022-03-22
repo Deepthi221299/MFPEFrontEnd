@@ -1,0 +1,45 @@
+
+<form
+  #form="ngForm"
+  class="mb-4 loginform"
+  autocomplete="off"
+  (submit)="onSubmit(form)">
+ 
+  <br>
+
+  <h2><p class="center">Sign In</p></h2>
+  
+  <div class="form-group">
+    
+    <label>Username</label>
+    <input
+      class="form-control"
+      #UserName="ngModel"
+      name="UserName"
+      [(ngModel)]="formModel.UserName" required/>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input
+      class="form-control"
+      type="password"
+      #Password="ngModel"
+      name="Password"
+      [(ngModel)]="formModel.Password" required/>
+  </div>
+  
+  
+ 
+  <br />
+  <div class="form-row">
+    <div class="form-group col-md-8 offset-md-2">
+      <button
+        type="submit"
+        class="form-control btn btn-lg btn-block btn-danger"
+        [disabled]="form.invalid">
+        Login
+      </button>
+    </div>
+  </div>
+</form>
+

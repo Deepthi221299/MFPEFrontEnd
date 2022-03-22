@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>{{data.productData.productName}}</h1>
+<p>{{data.productData.description}}</p>
+<div mat-dialog-content>
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>Enter Quantity</mat-label>
+    <input matInput type="text" [(ngModel)]="data.cartData.quantity" type="number">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Vendor Data</mat-label>
+    <mat-select [(ngModel)]="data.cartData.vendorId">
+      <mat-option *ngFor="let vendor of data.productData.vendorList" [value]="vendor.vendorId">
+        {{vendor.vendor.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div *ngIf="data.cartData.vendorId > 0">PRICE : {{getProdPrice()}}</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button align="end" cdkFocusInitial (click)="done()">Done</button>
+</div>
+<!-- description: "Budjet Friendly"
+imageName: "product1.jpg"
+price: 5999
+productId: 1
+productName: "Redmi"
+rating: 3
+vendorId: 0
+vendorList -->
